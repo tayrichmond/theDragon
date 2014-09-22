@@ -1,0 +1,93 @@
+<script>
+
+	//Changes location input to easier to manage strings.
+	function simplePlace() {
+		place = place.toLowerCase();
+		switch (place) {
+			case "the forest": 
+				place = 'forest';
+					break;
+			case 'forests':
+				place = 'forest';
+					break;
+			case 'the forests':
+				place = 'forest';
+					break;
+			case 'the mountain':
+				place = 'mountains';
+					break;
+			case 'the mountains':
+				place = 'mountains';
+					break;
+			case 'mountain':
+				place = 'mountains';
+					break;
+		};
+	}
+
+	//changes weapon input to easier to manage strings.
+	function simpleWeapon() {
+		weapon = weapon.toLowerCase();
+		switch (weapon) {
+			case 'the magic staff':
+				weapon = 'staff';
+				break;
+			case 'magic staff':
+				weapon = 'staff';
+				break;
+			case 'the sword':
+				weapon = 'sword';
+				break;
+		};
+	}
+
+	//displays different results for different location choices.
+	function placeResult() {
+		if (place === "forest") {
+			place = prompt("You spent all day wondering but found nothing. You return to your village to find death and destruction. Where do you look next? The forest or the mountains?");
+
+			simplePlace();
+			placeResult();
+		}	 
+			else if (place === 'mountains') {
+				var pickWeapon = prompt('You found the dragon! What will you use to kill it? Your sword or your magic staff?');
+				return pickWeapon;
+			}
+				else {
+					place = prompt('There are two places you can search for the dragon: The forest and the mountains. Where would you like to look?');
+					
+					simplePlace();
+					placeResult();
+				};
+	}
+
+	//displays different results for different weapon choices. Also ends the game.
+	function weaponResult() {
+		if (weapon === 'staff') {
+			alert("The magic swirled around the dragon like smoke from your staff. This angered the dragon, but did not seem to effect it. While you were distracted casting spells, the dragon was given plenty of time to bite your head off. You died.");
+		}
+			else if (weapon === 'sword') {
+				alert("You charge forward with you sword! The dragon is taken off guard by your courage. You slice the dragon with on long swipe, killing it instantly! You are the hero of your village." );
+			}
+				else {
+					weapon = prompt('You have two weapons to choose from: Your magic staff and your sword. Which one will you use to attack the dragon?');
+					
+					simpleWeapon();
+					weaponResult();
+				};
+	}
+
+	//Start of game code.
+	alert('You must slay the dragon and save your village!')
+
+	var place = prompt("A dragon has been tormenting your village, yet you don't know where to look for it. Surrounding your village is the forest and the mountains. You must stop the dragon before it kills again! Where do you look first?");
+
+	simplePlace();
+
+	var weapon = placeResult();
+
+	simpleWeapon();
+	weaponResult();
+
+
+</script>
